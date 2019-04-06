@@ -107,6 +107,7 @@
                                 @if (\Route::currentRouteName() == 'comments.edit')
                                     @if (request()->route('comment')->id === $comment->id)
                                         <form action="{{ route('comments.update', ['comment' => $comment->id , 'post' => $post->title]) }}" method="POST">
+                                            {{ csrf_field() }}
                                             {{ method_field('PUT') }}
 
                                             <input type="text" name="comment" value="{{ $comment->body }}" class="form-control">
@@ -125,11 +126,11 @@
                                         | 
                                          <a href="{{ route('comments.destroy',$comment->id) }}"
                                             onclick="event.preventDefault();
-                                                     document.getElementById('comment-destroy-form').submit();">
+                                                     document.getElementById('comment-destroy-form{{ $comment->id }}').submit();">
                                             Delete
                                         </a>
 
-                                        <form id="comment-destroy-form" action="{{ route('comments.destroy',$comment->id) }}" method="POST" style="display: none;">
+                                        <form id="comment-destroy-form{{ $comment->id }}" action="{{ route('comments.destroy',$comment->id) }}" method="POST" style="display: none;">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
                                             
@@ -170,6 +171,7 @@
                                                 @if (request()->route('reply')->id === $reply->id)
                                                     <form action="{{ route('replies.update', ['reply' => $reply->id ,'comment' => $comment->id , 'post' => $post->title]) }}" method="POST">
                                                         {{ method_field('PUT') }}
+                                                        {{ csrf_field() }}
                                                         <input type="text" name="comment" value="{{ $reply->body }}" class="form-control">
                                                         <hr>
                                                         <input type="submit" class="form-control" value="Edit Reply">
@@ -185,12 +187,12 @@
                                         <a href="/replies/{{$reply->id}}/{{ $post->title}}"> Edit </a>
                                         | 
                                          <a href="{{ route('replies.destroy',$reply->id) }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('reply-destroy-form').submit();">
-                                            Delete
+                                           onclick="event.preventDefault();
+                                                    document.getElementById('reply-destroy-form{{ $reply->id }}').submit();">
+                                                        Delete
                                         </a>
 
-                                        <form id="reply-destroy-form" action="{{ route('replies.destroy',$reply->id) }}" method="POST" style="display: none;">
+                                        <form id="reply-destroy-form{{ $reply->id }}" action="{{ route('replies.destroy',$reply->id) }}" method="POST" style="display: none;">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
                                             
