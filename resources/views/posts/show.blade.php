@@ -12,7 +12,7 @@
         <div class="panel panel-white post panel-shadow">
             <div class="post-heading">
                 <div class="pull-left image">
-                   <img src="/profile_pictures/{{ $post->admin->profile_picutre ?? 'default.png'}}" class="img-circle avatar" alt="User Profile Image">
+                   <img src="/profile_pictures/{{ $post->admin->profile_picture ?? 'default.png'}}" class="img-circle avatar" alt="User Profile Image">
                 </div>
                 <div class="pull-left meta">
                     <div class="title h5">
@@ -97,7 +97,7 @@
                     <ul class="comments-list">
                         <li class="comment">
                             <a class="pull-left" href="/profile/{{$comment->user->username}}">
-                                <img src="/profile_pictures/{{ $post->admin->profile_picutre ?? 'default.png'}}" class="img-circle avatar" alt="User Profile Image">
+                                <img src="/profile_pictures/{{ $post->admin->profile_picture ?? 'default.png'}}" class="img-circle avatar" alt="User Profile Image">
                             </a>
                             <div class="comment-body">
                                 <div class="comment-heading">
@@ -159,7 +159,7 @@
                                     @if ($comment->replies->count())
                                         @foreach ($comment->replies as $reply)
                                             <a class="pull-left" href="/profile/{{$comment->user->username}}">
-                                                <img src="/profile_pictures/{{ $post->admin->profile_picutre ?? 'default.png'}}" class="img-circle avatar" alt="User Profile Image">
+                                                <img src="/profile_pictures/{{ $post->admin->profile_picture ?? 'default.png'}}" class="img-circle avatar" alt="User Profile Image">
                                             </a>                                            
                                             <div class="comment-body">
                                                 <div class="comment-heading">
